@@ -21,6 +21,18 @@
 // 5. Find References:
 //    Shows call sites rather than interface implementations. Answers "who calls this function?"
 //    "PrintGreeting" on line 53 → Shows references on lines 59 and 60
+//
+// 6. Go to Definition (cross-file):
+//    Jump to a function defined in another file within the same package.
+//    "VersionedGreeting" on line 61 → Highlights its definition in helpers.go line 6
+//
+// 7. Find References (cross-file):
+//    Find all usages of a symbol defined in another file.
+//    "VersionedGreeting" in helpers.go → Shows reference on line 61
+//
+// 8. Go to Definition (constant):
+//    Navigate to constant definitions used within functions.
+//    "appVersion" in helpers.go line 7 → Highlights its definition on line 3 of helpers.go
 
 package main
 
@@ -58,4 +70,5 @@ func main() {
 	// Same function, different implementations - that's the power of interfaces
 	PrintGreeting(SimpleGreeter{}, "world") // Output: Hello, world
 	PrintGreeting(FormalGreeter{}, "world") // Output: Good day, world
+	fmt.Println(VersionedGreeting("versioned world")) // Output: [v1] Hello, versioned world
 }

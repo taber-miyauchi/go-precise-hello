@@ -9,10 +9,12 @@ This lab provides a hands-on example for testing precise navigation capabilities
 - **Go to Definition** – Jump to type and method definitions
 - **Find Implementations** – Discover all concrete implementations of an interface or method
 - **Find References** – Locate all call sites of a function
+- **Cross-file Navigation** – Navigate between symbols defined in different files within the same package
 
 ## Structure
 
 - `main.go` – Contains a `Greeter` interface with two implementations (`SimpleGreeter`, `FormalGreeter`) and documented navigation exercises
+- `helpers.go` – Contains `VersionedGreeting` function and `appVersion` constant, demonstrating cross-file navigation and standalone functions
 - `index.scip` – SCIP index file for precise code intelligence
 
 ## Generating the SCIP Index
@@ -27,6 +29,8 @@ scip-go
 # Clean up (optional)
 rm index.scip
 ```
+
+> **Note:** This can be automated in CI using `.github/workflows/scip-index.yml`.
 
 ## Usage
 
