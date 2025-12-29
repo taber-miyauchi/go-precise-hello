@@ -125,6 +125,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.24'  # scip-go v0.1.26+ requires Go 1.24+
+          cache: false        # Disable cache - no external dependencies (no go.sum)
 
       # -----------------------------------------------------------------------
       # Step 3: Install scip-go
