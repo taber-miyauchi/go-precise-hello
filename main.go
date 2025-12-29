@@ -28,7 +28,7 @@
 //
 // 7. Find References (cross-file):
 //    Find all usages of a symbol defined in another file.
-//    "VersionedGreeting" in helpers.go → Shows reference on line 61
+//    "VersionedGreeting" in helpers.go → Shows reference on line 73
 //
 // 8. Go to Definition (constant):
 //    Navigate to constant definitions used within functions.
@@ -68,7 +68,7 @@ func PrintGreeting(g Greeter, name string) {
 
 func main() {
 	// Same function, different implementations - that's the power of interfaces
-	PrintGreeting(SimpleGreeter{}, "world") // Output: Hello, world
-	PrintGreeting(FormalGreeter{}, "world") // Output: Good day, world
+	PrintGreeting(SimpleGreeter{}, "world")           // Output: Hello, world
+	PrintGreeting(FormalGreeter{}, "world")           // Output: Good day, world
 	fmt.Println(VersionedGreeting("versioned world")) // Output: [v1] Hello, versioned world
 }
