@@ -9,7 +9,7 @@
 #
 # What this workflow does:
 # 1. Triggers on pushes to the main branch
-# 2. Sets up Go environment (pinned to 1.22.x to avoid known issues)
+# 2. Sets up Go environment (1.24+ required by scip-go)
 # 3. Installs scip-go (the Go SCIP indexer)
 # 4. Installs src-cli (Sourcegraph command-line interface)
 # 5. Generates an index.scip file containing symbol information
@@ -108,9 +108,7 @@ jobs:
       # -----------------------------------------------------------------------
       # actions/setup-go@v5 installs and configures Go on the runner.
       #
-      # CRITICAL: We pin to Go 1.22.x because:
-      #   - Issue #119 in scip-go causes panics with Go 1.23.0
-      #   - The go-sqlite3 dependency has compatibility issues with 1.23+
+      # NOTE: scip-go v0.1.26+ requires Go 1.24 or later.
       #
       # What this action does:
       #   - Installs the specified Go version
@@ -119,9 +117,9 @@ jobs:
       #   - Caches downloaded modules for faster subsequent runs
       #
       # The 'go-version' format:
-      #   - '1.22': Latest 1.22.x patch version (recommended for stability)
-      #   - '1.22.5': Exact version (use if you need precise reproducibility)
-      #   - '^1.22': Caret syntax, equivalent to '1.22'
+      #   - '1.24': Latest 1.24.x patch version (recommended for stability)
+      #   - '1.24.0': Exact version (use if you need precise reproducibility)
+      #   - '^1.24': Caret syntax, equivalent to '1.24'
       # -----------------------------------------------------------------------
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -274,7 +272,7 @@ jobs:
 # Fix: Ensure the repository is added/synced in your Sourcegraph instance.
 #
 # Issue: scip-go panics or crashes
-# Fix: Check Go version - must be 1.22.x, not 1.23+ (issue #119).
+# Fix: Check Go version - must be 1.24+ for scip-go v0.1.26+.
 #
 # Issue: Index seems incomplete (missing symbols)
 # Fix: Ensure all dependencies are available. Try running locally first.
