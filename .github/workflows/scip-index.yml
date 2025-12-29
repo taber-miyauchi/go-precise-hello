@@ -214,7 +214,7 @@ jobs:
       #
       # Command breakdown:
       #   src code-intel upload    Upload code intelligence data
-      #     -repo=...              Repository name as known to Sourcegraph
+      #     -repo=...              Repository name with host prefix (e.g., github.com/owner/repo)
       #     -commit=...            Git commit SHA being indexed
       #     -file=index.scip       Path to the generated SCIP file
       #
@@ -254,7 +254,7 @@ jobs:
           SRC_ACCESS_TOKEN: ${{ secrets.SRC_ACCESS_TOKEN }}
         run: |
           src code-intel upload \
-            -repo=${{ github.repository }} \
+            -repo=github.com/${{ github.repository }} \
             -commit=${{ github.sha }} \
             -file=index.scip
 
